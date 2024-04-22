@@ -11,3 +11,7 @@ class Rounds:
         print('--------------------')
         command = f'Trwa runda numer {rounds}'
         return command
+
+
+class user_animals():
+    pass

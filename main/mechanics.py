@@ -19,10 +19,12 @@ def type_choice():
 
 def make_choice(choice):
     if choice == 1:
-        print('Jeden')
+        print('Tutaj będzie rzut kostką i rozpoczęcie tury nowego gracza')
     elif choice == 2:
-        print('Dwa')
+        print('Tu pojawi się lista zwierząt')
+        make_choice(type_choice())
     elif choice == 3:
-        print('Trzy')
+        print('Tutaj będzie można wymienić zwierzęta, rozpoczęcie tury nowego gracza')
     elif choice == 4:
-        print('cztery')
+        print('Tutaj pojawią się wskazówki dotyczące rozgrywki')
+        make_choice(type_choice())
