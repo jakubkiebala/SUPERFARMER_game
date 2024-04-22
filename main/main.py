@@ -6,15 +6,14 @@ rounds = Rounds()
 
 
 def game_user1():
+    rounds.add_rounds()
     print(rounds.show_rounds())
     game_1()
     game_user2()
 
 
 def game_user2():
-    print(rounds.show_rounds())
     game_2()
-    rounds.add_rounds()
     game_user1()
 
 

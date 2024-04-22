@@ -8,4 +8,6 @@ class Rounds:
 
     def show_rounds(self):
         rounds = sum(self.no_rounds)
-        return f'Trwa runda numer {rounds}'
+        print('--------------------')
+        command = f'Trwa runda numer {rounds}'
+        return command
