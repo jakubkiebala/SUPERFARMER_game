@@ -1,6 +1,11 @@
 from random import choice
 from data import UserAnimals
+from interface import show_trivia, exchanging_interface
+
 FARM1 = UserAnimals()
+
+
+# MECHANISM OF INTERFACE #
 
 
 def type_choice_u1():
@@ -29,10 +34,14 @@ def make_choice_u1(do_choice):
         print(FARM1.owned_animals)
         make_choice_u1(type_choice_u1())
     elif do_choice == 3:
-        print('Tutaj będzie można wymienić zwierzęta, rozpoczęcie tury nowego gracza')
+        print(exchanging_interface())
+        choosing_operations_u1(ask_for_exchange_u1())
     elif do_choice == 4:
-        print('Tutaj pojawią się wskazówki dotyczące rozgrywki')
+        print(show_trivia())
         make_choice_u1(type_choice_u1())
+
+
+# MECHANISMS OF ROLLING DICES #
 
 
 def roll_the_dices_u1():
@@ -103,3 +112,42 @@ def second_dice_operating_u1(drawn1, drawn2):
             print(f'|#| Nie dodano {drawn2}')
             print('')
             print('>>>>----------------------------------<<<<')
+
+
+# MECHANISM OF EXCHANGING ANIMALS #
+
+
+def ask_for_exchange_u1():
+    while True:
+        question = input('|#| Które zwierze chcesz wymienić : ')
+        try:
+            question = int(question)
+            if 0 < question < 7:
+                return question
+            else:
+                print('')
+                print('|#| Wygląda na to, że podana opcja nie istnieje')
+                print('|#| Spróbuj jeszcze raz')
+                print('')
+        except ValueError:
+            print('')
+            print('|#| Wprowadzono niepoprawną wartość')
+            print('|#| Spróbuj jeszcze raz')
+            print('')
+
+
+def choosing_operations_u1(do_ask):
+    if do_ask == 1:
+        print('Operacje na królikach')
+    elif do_ask == 2:
+        print('Operacje na owcach')
+    elif do_ask == 3:
+        print('Operacje na świniach')
+    elif do_ask == 4:
+        print('Operacje na krowach')
+    elif do_ask == 5:
+        print('Operacje na koniach')
+    elif do_ask == 6:
+        print('Powrót do menu')
+        make_choice_u1(type_choice_u1())
+
