@@ -13,5 +13,9 @@ class Rounds:
         return command
 
 
-class user_animals():
-    pass
+class UserAnimals:
+    def __init__(self):
+        self.owned_animals = ['Królik']
+
+    def add_animal(self, animal):
+        self.owned_animals.append(animal)
