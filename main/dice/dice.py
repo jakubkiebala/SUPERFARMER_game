@@ -32,36 +32,46 @@ def roll_second_dice():
 
 
 def dice_actions(drawn1, drawn2):
-    if drawn1 != 'Lis':
-        dice_operating(drawn1, drawn2)
-        pass
+    if drawn1 != 'Lis' and drawn2 != 'Wilk':
+        first_dice_operating(drawn1, drawn2)
+        second_dice_operating(drawn1, drawn2)
     else:
         print('Oh noo')
 
 
-def dice_operating(drawn1, drawn2):
+def first_dice_operating(drawn1, drawn2):
     drawn1_counted = FARM.owned_animals.count(drawn1)
-    print(drawn1_counted)
     if drawn1 == drawn2:
         if drawn1_counted < 2:
             FARM.add_animal(drawn1)
-            print(f'|1| Dodano {drawn1} w liczbie : (1)')
+            print(f'|#| Dodano {drawn1} w liczbie : (1)')
         elif drawn1_counted % 2 == 0:
             half_animals_1 = drawn1_counted // 2
             for i in range(half_animals_1):
                 FARM.add_animal(drawn1)
-            print(f'|2| Dodano {drawn1} w liczbie : ({half_animals_1})')
+            print(f'|#| Dodano {drawn1} w liczbie : ({half_animals_1})')
         elif drawn1_counted % 2 != 0:
             half_animals_2 = (drawn1_counted - 1) // 2
             for i in range(half_animals_2):
                 FARM.add_animal(drawn1)
-            print(f'|3| Dodano {drawn1} w liczbie : ({half_animals_2})')
+            print(f'|#| Dodano {drawn1} w liczbie : ({half_animals_2})')
     elif drawn1_counted >= 2:
         FARM.add_animal(drawn1)
-        print(f'|4| Dodano {drawn1} w liczbie (1)')
+        print(f'|#| Dodano {drawn1} w liczbie (1)')
     else:
-        print(f'|5| Nie dodano {drawn1}')
+        print(f'|#| Nie dodano {drawn1}')
 
 
+def second_dice_operating(drawn1, drawn2):
+    drawn2_counted = FARM.owned_animals.count(drawn2)
+    if drawn2 != drawn1:
+        if drawn2_counted >= 2:
+            FARM.add_animal(drawn1)
+            print(f'|#| Dodano {drawn2} w liczbie (1)')
+        else:
+            print(f'|#| Nie dodano {drawn2}')
+
+
+FARM.add_animal('Świnia')
+FARM.add_animal('Świnia')
 roll_the_dices()
-
