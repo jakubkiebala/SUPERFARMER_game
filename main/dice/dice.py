@@ -70,8 +70,3 @@ def second_dice_operating(drawn1, drawn2):
             print(f'|#| Dodano {drawn2} w liczbie (1)')
         else:
             print(f'|#| Nie dodano {drawn2}')
-
-
-FARM.add_animal('Świnia')
-FARM.add_animal('Świnia')
-roll_the_dices()

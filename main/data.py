@@ -1,3 +1,5 @@
+
+
 class Rounds:
     def __init__(self):
         self.no_rounds = []
@@ -8,7 +10,8 @@ class Rounds:
 
     def show_rounds(self):
         rounds = sum(self.no_rounds)
-        print('--------------------')
+        print('')
+        print('>>>>----------------------------------<<<<')
         command = f'Trwa runda numer {rounds}'
         return command
 
