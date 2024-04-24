@@ -37,3 +37,23 @@ class UserAnimals:
         for i in range(2):
             self.owned_animals.remove('Owca')
         self.add_animal('Świnia')
+
+    def exchange_pig_sheep(self):
+        self.owned_animals.remove('Świnia')
+        for i in range(2):
+            self.add_animal('Owca')
+
+    def exchange_pig_cow(self):
+        for i in range(3):
+            self.owned_animals.remove('Świnia')
+        self.add_animal('Krowa')
+
+    def exchange_cow_pig(self):
+        self.owned_animals.remove('Krowa')
+        for i in range(3):
+            self.add_animal('Świnia')
+
+    def exchange_cow_horse(self):
+        for i in range(2):
+            self.owned_animals.remove('Krowa')
+        self.add_animal('Koń')

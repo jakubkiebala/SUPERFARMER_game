@@ -144,9 +144,10 @@ def choosing_operations_u1(do_ask):
     elif do_ask == 3:
         pig_operations()
     elif do_ask == 4:
-        print('Operacje na krowach')
+        cow_operations()
     elif do_ask == 5:
-        print('Operacje na koniach')
+        print('Ihaahaaa')
+        choosing_operations_u1(ask_for_exchange_u1())
     elif do_ask == 6:
         print('Powrót do menu')
         make_choice_u1(type_choice_u1())
@@ -200,7 +201,7 @@ def sheep_operations():
         print('|#| Możesz wymienić 1 Owcę na 6 Królików \n'
               '    lub wymienić 2 Owce na 1 Świnię')
         print('|#| 1 Owca => 6 Królików : 1 ')
-        print('|#| 3 Owce => 1 Świnia : 2 ')
+        print('|#| 2 Owce => 1 Świnia : 2 ')
         print('|#| Wyjście : e ')
         while True:
             ask = str(input('|#| Wybierz : '))
@@ -222,16 +223,92 @@ def sheep_operations():
 
 
 def pig_operations():
-    pass
+    counted_pigs = FARM1.owned_animals.count('Świnia')
+    if counted_pigs < 1:
+        print('|#| Nie posiadasz wystarczającej ilości Świń \n'
+              '    aby wykonać jakąkolwiek wymianę')
+        choosing_operations_u1(ask_for_exchange_u1())
+    elif 3 > counted_pigs >= 1:
+        print('|#| Możesz wymienić 1 Świnię na 2 Owce')
+        print('|#| y : tak / n : nie')
+        while True:
+            question = str(input('|#| Wybierz : '))
+            if question not in ('y', 'n'):
+                print('|#| Podano złą wartość, spróbuj jeszcze raz')
+            elif question == 'y':
+                FARM1.exchange_pig_sheep()
+                print('|#| Otrzymano 2 Owce')
+                pig_operations()
+                return None
+            elif question == 'n':
+                choosing_operations_u1(ask_for_exchange_u1())
+                return None
+    elif counted_pigs >= 3:
+        print('|#| Możesz wymienić 1 Świnię na 2 Owce \n'
+              '    lub wymienić 3 Świnie na 1 Krowę')
+        print('|#| 1 Świnia => 2 Owce : 1 ')
+        print('|#| 3 Świnie => 1 Krowa : 2 ')
+        print('|#| Wyjście : e ')
+        while True:
+            ask = str(input('|#| Wybierz : '))
+            if ask not in ('1', '2', 'e'):
+                print('|#| Podano złą wartość, spróbuj jeszcze raz')
+            elif ask == '1':
+                FARM1.exchange_pig_sheep()
+                print('|#| Otrzymano 2 Owce')
+                pig_operations()
+                return None
+            elif ask == '2':
+                FARM1.exchange_pig_cow()
+                print('|#| Otrzymano 1 Krowę')
+                pig_operations()
+                return None
+            elif ask == 'e':
+                choosing_operations_u1(ask_for_exchange_u1())
+                return None
 
 
-
-
-
-
-
-for i in range(3):
-    FARM1.add_animal('Owca')
-
-rabbit_operations()
-print(FARM1.owned_animals)
+def cow_operations():
+    counted_cows = FARM1.owned_animals.count('Krowa')
+    if counted_cows < 1:
+        print('|#| Nie posiadasz wystarczającej ilości Krów \n'
+              '    aby wykonać jakąkolwiek wymianę')
+        choosing_operations_u1(ask_for_exchange_u1())
+    elif 2 > counted_cows >= 1:
+        print('|#| Możesz wymienić 1 Krowę na 3 Świnie')
+        print('|#| y : tak / n : nie')
+        while True:
+            question = str(input('|#| Wybierz : '))
+            if question not in ('y', 'n'):
+                print('|#| Podano złą wartość, spróbuj jeszcze raz')
+            elif question == 'y':
+                FARM1.exchange_cow_pig()
+                print('|#| Otrzymano 3 Świnie')
+                cow_operations()
+                return None
+            elif question == 'n':
+                choosing_operations_u1(ask_for_exchange_u1())
+                return None
+    elif counted_cows >= 2:
+        print('|#| Możesz wymienić 1 Krowę na 3 Świnie \n'
+              '    lub wymienić 2 Krowy na 1 Konia')
+        print('|#| 1 Krowa => 3 Świnie : 1 ')
+        print('|#| 2 Krowy => 1 Koń : 2 ')
+        print('|#| Wyjście : e ')
+        while True:
+            ask = str(input('|#| Wybierz : '))
+            if ask not in ('1', '2', 'e'):
+                print('|#| Podano złą wartość, spróbuj jeszcze raz')
+            elif ask == '1':
+                FARM1.exchange_cow_pig()
+                print('|#| Otrzymano 3 Świnie')
+                cow_operations()
+                return None
+            elif ask == '2':
+                FARM1.exchange_cow_horse()
+                print('|#| Otrzymano 1 Konia')
+                cow_operations()
+                return None
+            elif ask == 'e':
+                choosing_operations_u1(ask_for_exchange_u1())
+                return None
