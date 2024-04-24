@@ -104,7 +104,7 @@ def second_dice_operating_u2(drawn1, drawn2):
     drawn2_counted = FARM2.owned_animals.count(drawn2)
     if drawn2 != drawn1:
         if drawn2_counted >= 2:
-            FARM2.add_animal(drawn1)
+            FARM2.add_animal(drawn2)
             print(f'|#| Dodano {drawn2} w liczbie (1)')
         else:
             print(f'|#| Nie dodano {drawn2}')
